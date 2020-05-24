@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @evento.comuna.nombre.capitalize %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @evento.descripcion %>
+</p>
+
+<p>
+  <strong>Organizacion:</strong>
+  <%= @evento.organizacion %>
+</p>
+
+<p>
+  <strong>Encargado:</strong>
+  <%= @evento.encargado %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @evento.direccion %>
+</p>
+
+<p>
+  <strong>Dias horarios:</strong>
+  <%= @evento.dias_horarios %>
+</p>
+
+<p>
+  <strong>Organizador:</strong>
+  <%= @evento.organizador %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @evento.photo %>
+</p>
+
+<%= link_to 'Edit', edit_evento_path(@evento) %> |
+<%= link_to 'Back', :back %>

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
   	@regiones = Region.all
+  	@eventos = Evento.all
   end
 
   def change_region

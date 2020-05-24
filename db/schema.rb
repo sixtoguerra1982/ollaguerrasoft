@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_035328) do
+ActiveRecord::Schema.define(version: 2020_05_24_083707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 2020_05_24_035328) do
     t.index ["region_id"], name: "index_comunas_on_region_id"
   end
 
+  create_table "eventos", force: :cascade do |t|
+    t.bigint "comuna_id"
+    t.text "descripcion"
+    t.string "organizacion"
+    t.string "encargado"
+    t.string "direccion"
+    t.text "dias_horarios"
+    t.string "organizador"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comuna_id"], name: "index_eventos_on_comuna_id"
+  end
+
   create_table "regiones", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -31,4 +45,5 @@ ActiveRecord::Schema.define(version: 2020_05_24_035328) do
   end
 
   add_foreign_key "comunas", "regiones"
+  add_foreign_key "eventos", "comunas"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :eventos
   get 'home/index'
   root to: 'home#index'
   get 'home/change_region'
