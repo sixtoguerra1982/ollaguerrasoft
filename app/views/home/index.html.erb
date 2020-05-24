@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+ <h5>Olla Comun</h5>
+
+<div class="container">
+	 <div class="input-field col s6">
+		<select>
+		  <option value="" disabled selected>Comunas de Chile</option>
+		  <optgroup label="team 1">
+		    <option value="1">Option 1</option>
+		    <option value="2">Option 2</option>
+		  </optgroup>
+		  <optgroup label="team 2">
+		    <option value="3">Option 3</option>
+		    <option value="4">Option 4</option>
+		  </optgroup>
+		</select>
+		<label>Seleccione Comuna</label>
+	  </div>
+</div>
+
+ <script>
+ 	$(document).ready(function(){
+     $('select').formSelect();
+  	});
+ </script>

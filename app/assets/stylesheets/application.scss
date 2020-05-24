@@ -14,7 +14,26 @@
  *= require_self
  */
   @import "materialize/components/color-variables";
-  $primary-color: color("blue", "lighten-2") !default;
-  $secondary-color: color("yellow", "base") !default;
   @import "materialize";
   @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+    .logo{
+        position:absolute;
+        height:100%;
+        width: 10%;
+    }
+
+	@media (min-width: 768px) and (min-height: 500px) {
+	 .page-footer {
+	   position: fixed;
+	   bottom: 0;
+	   width: 100%;
+	 }
+	}
+
+    .page-footer{
+        padding-top: 5px;
+    }
+    .footer-copyright {
+        padding: 0px;
+    }
