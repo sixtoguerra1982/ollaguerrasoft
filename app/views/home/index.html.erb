@@ -52,12 +52,12 @@
   	});
 
  	function ShowSelectedRegion(){
- 		var region = parseInt(document.getElementById("region").value);
+		var region = parseInt(document.getElementById("region").value);
 	 	$.ajax({
-      type: 'GET',
-      url: "<%= home_change_region_path %>",
-      dataType: "script",
-      data: {region_id: region}
-    });
+	      type: 'GET',
+	      url: "<%= home_change_region_path %>",
+	      dataType: "script",
+	      data: {region_id: region}
+	    });
  	}
  </script>

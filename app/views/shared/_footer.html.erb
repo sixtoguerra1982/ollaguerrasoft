@@ -18,8 +18,8 @@
 </footer>
 
 <script>
-	$(window).on('load resize', function() {
-
+	
+$(document).ready(function(){
 	  dimensionar();
 
 	  function dimensionar(){
@@ -27,6 +27,7 @@
 		      $('footer').outerHeight() + 'px' : 
 		      '0'
 		  });
+      $('.sidenav').sidenav();
 		};	
 
 	  document.getElementById('close-footer').addEventListener('click',alerta,false);
