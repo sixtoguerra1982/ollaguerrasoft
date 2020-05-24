@@ -1,17 +1,27 @@
  <h5>Olla Comun</h5>
 
 <div class="container">
-	 <div class="input-field col s6">
-		<select>
-		  <option value="" disabled selected>Comunas de Chile</option>
-		  <optgroup label="team 1">
-		    <option value="1">Option 1</option>
-		    <option value="2">Option 2</option>
-		  </optgroup>
-		  <optgroup label="team 2">
-		    <option value="3">Option 3</option>
-		    <option value="4">Option 4</option>
-		  </optgroup>
+
+	<div class="input-field col s12">
+		<select id="region" name="region" onchange="ShowSelectedRegion();">
+			<option value="" disabled selected></option>
+		  <% @regiones.each do |r| %>
+			    <option value="<%= r.id %>"><%= r.nombre %></option>
+		  <% end %>
+		</select>
+		<label>Seleccione Region</label>
+	  </div>
+
+	 <div class="input-field col s12">
+		<select id="comuna" name="comuna">
+		  <option value="" disabled selected></option>
+		  <% @regiones.each do |r| %>
+		  	<optgroup label="<%= r.nombre %>">
+		  		<% r.comunas.each do |c| %>
+			    	<option value="<%= c.codigo %>"><%= c.nombre %></option>
+			    <% end %>
+		  	</optgroup>
+		  <% end %>
 		</select>
 		<label>Seleccione Comuna</label>
 	  </div>
@@ -21,4 +31,14 @@
  	$(document).ready(function(){
      $('select').formSelect();
   	});
+
+ 	function ShowSelectedRegion(){
+ 		var region = parseInt(document.getElementById("region").value);
+	 	$.ajax({
+      type: 'GET',
+      url: "<%= home_change_region_path %>",
+      dataType: "script",
+      data: {region_id: region}
+    });
+ 	}
  </script>

@@ -1,0 +1,21 @@
+
+$('#comuna').children().remove();
+
+
+$('#comuna').append($('<option>',
+    {
+        value: "",
+        disabled: "",
+        selected: "",
+        text : ""
+    }));
+
+<% @comunas.each do |c| %>
+  $('#comuna').append($('<option>',
+    {
+        value: "<%= c.codigo %>",
+        text : "<%= c.nombre %>",
+    }));
+<% end %>
+
+$('#comuna').formSelect();
