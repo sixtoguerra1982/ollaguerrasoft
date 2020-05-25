@@ -5,6 +5,7 @@ class EventosController < ApplicationController
   # GET /eventos.json
   def index
     @eventos = Evento.all.order(:comuna_id)
+    authorize @eventos
   end
 
   # GET /eventos/1
@@ -15,6 +16,7 @@ class EventosController < ApplicationController
   # GET /eventos/new
   def new
     @evento = Evento.new
+    authorize @evento
   end
 
   # GET /eventos/1/edit
@@ -26,6 +28,7 @@ class EventosController < ApplicationController
   def create
     @evento = Evento.new(evento_params)
     @evento.user = current_user
+    authorize @evento
     respond_to do |format|
       if @evento.save
         format.html { redirect_to @evento, notice: 'Evento was successfully created.' }
@@ -65,6 +68,7 @@ class EventosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
       @evento = Evento.find(params[:id])
+      authorize @evento
     end
 
     # Only allow a list of trusted parameters through.
