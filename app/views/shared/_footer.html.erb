@@ -21,13 +21,15 @@
 	
 $(document).ready(function(){
 	  dimensionar();
+    $('.sidenav').sidenav();
 
 	  function dimensionar(){
-		  $('body').css({paddingBottom: $(window).width() >= 768 && $(window).height() >= 500 ?
-		      $('footer').outerHeight() + 'px' : 
-		      '0'
-		  });
-      $('.sidenav').sidenav();
+      
+  		  $('body').css({paddingBottom: $(window).width() >= 768 && $(window).height() >= 500 ?
+  		      $('footer').outerHeight() + 'px' : 
+  		      '0'
+  		  });
+      
 		};	
 
 	  document.getElementById('close-footer').addEventListener('click',alerta,false);

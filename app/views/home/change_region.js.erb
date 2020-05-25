@@ -13,7 +13,7 @@ $('#comuna').append($('<option>',
 <% @comunas.each do |c| %>
   $('#comuna').append($('<option>',
     {
-        value: "<%= c.codigo %>",
+        value: "<%= c.id %>",
         text : "<%= c.nombre %>",
     }));
 <% end %>

@@ -24,11 +24,13 @@
     }
 
 	@media (min-width: 768px) and (min-height: 500px) {
-	 .page-footer {
-	   position: fixed;
-	   bottom: 0;
-	   width: 100%;
-	 }
+    
+  	 .page-footer {
+       position: fixed;
+       bottom: 0;
+       width: 100%;
+     }
+    
 	}
   footer{
    z-index : 1000;

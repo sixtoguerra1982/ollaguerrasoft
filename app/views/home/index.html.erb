@@ -12,22 +12,31 @@
 		<label>Seleccione Region</label>
 	  </div>
 
-	 <div class="input-field col s12">
-		<select id="comuna" name="comuna">
+	 <div class="input-field col s6">
+		<select id="comuna" name="comuna" onchange="ShowSelectedComuna();">
 		  <option value="" disabled selected></option>
 		  <% @regiones.each do |r| %>
 		  	<optgroup label="<%= r.nombre %>">
 		  		<% r.comunas.each do |c| %>
-			    	<option value="<%= c.codigo %>"><%= c.nombre %></option>
+			    	<option value="<%= c.id %>"><%= c.nombre %></option>
 			    <% end %>
 		  	</optgroup>
 		  <% end %>
 		</select>
 		<label>Seleccione Comuna</label>
-	  </div>
+		<div class="col s6 center-align">
+      		<a class="btn-floating btn-large cyan pulse" href="<%= home_index_path %>" id="search"><i class="material-icons">search</i></a>
+      	</div>
+	 </div>
+	</div>
 </div>
 
 <section>
+	<% if @comuna.present? %>
+		<div class="container">
+       		<p><%= @cantidad %><%= @cantidad == 1 ? ' Registro encontrado' : ' Registros encontrados' %> en la comuna de : <%= @comuna.nombre.capitalize %> , Region : <%= @comuna.region.nombre.capitalize %> </p>
+       	</div>
+    <% end %>
 	<div class="row">
 		<% @eventos.each do |e| %>
 	    <div class="col s6">
@@ -60,4 +69,10 @@
 	      data: {region_id: region}
 	    });
  	}
+
+ 	function ShowSelectedComuna(){
+ 		var comuna = parseInt(document.getElementById("comuna").value);
+ 		$('#search').attr("href","<%= home_index_path + '?search='%>" + comuna);
+ 	}
  </script>
+

@@ -1,8 +1,9 @@
 puts "*** Cargando Eventos..."
+arr = [1,9,5,2,4,9,5,8,7,9,9,8,2,7,5,8,279,2,9]
 13.times do |i|
 	i+=1
 	Evento.create(
-		comuna_id: 1,
+		comuna_id: arr[rand(arr.count)],
     	descripcion: Faker::Company.catch_phrase,
     	organizacion: Faker::Company.name,
     	encargado: Faker::Company.profession, 
