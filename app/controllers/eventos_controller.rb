@@ -1,10 +1,10 @@
 class EventosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    @eventos = Evento.all.order(:comuna_id)
   end
 
   # GET /eventos/1
@@ -24,8 +24,8 @@ class EventosController < ApplicationController
   # POST /eventos
   # POST /eventos.json
   def create
-    byebug
     @evento = Evento.new(evento_params)
+    @evento.user = current_user
     respond_to do |format|
       if @evento.save
         format.html { redirect_to @evento, notice: 'Evento was successfully created.' }

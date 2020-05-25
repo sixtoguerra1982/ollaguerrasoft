@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_005838) do
+ActiveRecord::Schema.define(version: 2020_05_25_032747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,9 @@ ActiveRecord::Schema.define(version: 2020_05_25_005838) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["comuna_id"], name: "index_eventos_on_comuna_id"
+    t.index ["user_id"], name: "index_eventos_on_user_id", unique: true
   end
 
   create_table "regiones", force: :cascade do |t|
@@ -58,4 +60,5 @@ ActiveRecord::Schema.define(version: 2020_05_25_005838) do
 
   add_foreign_key "comunas", "regiones"
   add_foreign_key "eventos", "comunas"
+  add_foreign_key "eventos", "users"
 end

@@ -1,9 +1,11 @@
 puts "*** Cargando Eventos..."
+Evento.destroy_all
 arr = [1,9,5,2,4,9,5,8,7,9,9,8,2,7,5,8,279,2,9]
 13.times do |i|
 	i+=1
-	Evento.create(
+	Evento.create!(
 		comuna_id: arr[rand(arr.count)],
+        user_id: i,
     	descripcion: Faker::Company.catch_phrase,
     	organizacion: Faker::Company.name,
     	encargado: Faker::Company.profession, 
@@ -13,3 +15,4 @@ arr = [1,9,5,2,4,9,5,8,7,9,9,8,2,7,5,8,279,2,9]
     	photo: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amerikickkansas.com%2Fhome%2Fdefault-image%2F&psig=AOvVaw3D9peCvEtB9Y0DNF1h--dK&ust=1590396670152000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNim0raPzOkCFQAAAAAdAAAAABAD"
 	)
 end
+
