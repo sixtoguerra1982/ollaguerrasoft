@@ -1,57 +1,86 @@
-<%= form_with(model: evento, local: true) do |form| %>
-  <% if evento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
+<div class="container">
+  <%= form_with(model: evento, local: true) do |form| %>
+    <% if evento.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
 
-      <ul>
-      <% evento.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <ul>
+        <% evento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="input-field">    
+      <select id="comuna" name="comuna">
+      <% if evento.comuna_id.nil? %>
+        <option value="" disabled selected></option>
       <% end %>
-      </ul>
+      <% Region.all.each do |r| %>
+        <optgroup label="<%= r.nombre %>">
+          <% r.comunas.each do |c| %>
+            <% if evento.comuna_id.nil? %>
+              <option value="<%= c.id %>"><%= c.nombre %></option>
+            <% else %>
+              <option value="<%= c.id %>" <%= evento.comuna_id == c.id ? 'selected' : '' %>><%= c.nombre %></option>
+            <% end %>
+          <% end %>
+        </optgroup>
+      <% end %>
+      </select>
+
+      <label>Seleccione Comuna</label>
+      <%= form.hidden_field :comuna_id %>  
+    </div>
+
+    <div class="field">
+      <%= form.label :descripcion %>
+      <%= form.text_area :descripcion %>
+    </div>
+
+    <div class="field">
+      <%= form.label :organizacion %>
+      <%= form.text_field :organizacion %>  
+    </div>
+
+    <div class="field">
+      <%= form.label :encargado %>
+      <%= form.text_field :encargado %>
+    </div>
+
+    <div class="field">
+      <%= form.label :direccion %>
+      <%= form.text_field :direccion %>
+    </div>
+
+    <div class="field">
+      <%= form.label :dias_horarios %>
+      <%= form.text_area :dias_horarios %>
+    </div>
+
+    <div class="field">
+      <%= form.label :organizador %>
+      <%= form.text_field :organizador %>
+    </div>
+
+    <div class="field">
+      <%= form.label :photo %>
+      <%= form.text_field :photo %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :comuna_id %>
-    <%= form.text_field :comuna_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :descripcion %>
-    <%= form.text_area :descripcion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :organizacion %>
-    <%= form.text_field :organizacion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :encargado %>
-    <%= form.text_field :encargado %>
-  </div>
-
-  <div class="field">
-    <%= form.label :direccion %>
-    <%= form.text_field :direccion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dias_horarios %>
-    <%= form.text_area :dias_horarios %>
-  </div>
-
-  <div class="field">
-    <%= form.label :organizador %>
-    <%= form.text_field :organizador %>
-  </div>
-
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<script>
+  $(document).ready(function(){
+     $('select').formSelect();
+     document.getElementById('comuna').addEventListener('change',ShowSelectedComuna,false);
+     function ShowSelectedComuna(){
+      var comuna = parseInt(document.getElementById("comuna").value);
+      $('#evento_comuna_id').attr("value",comuna);
+     }
+    });
+</script>

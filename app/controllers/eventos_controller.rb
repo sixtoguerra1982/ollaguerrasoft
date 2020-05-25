@@ -24,8 +24,8 @@ class EventosController < ApplicationController
   # POST /eventos
   # POST /eventos.json
   def create
+    byebug
     @evento = Evento.new(evento_params)
-
     respond_to do |format|
       if @evento.save
         format.html { redirect_to @evento, notice: 'Evento was successfully created.' }
