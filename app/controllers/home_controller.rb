@@ -8,7 +8,6 @@ class HomeController < ApplicationController
   	else
   		@eventos = Evento.all
   	end
-    flash[:notice] = "Bienvenido"
   end
 
   def change_region

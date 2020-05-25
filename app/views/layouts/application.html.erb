@@ -11,6 +11,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/notificar'%>
     <%= yield %>
     <% if ! params[:search].present? %>
       <%= render 'shared/footer' %>

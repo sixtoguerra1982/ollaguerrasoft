@@ -1,6 +1,6 @@
 class EventoPolicy < ApplicationPolicy
   def index?
-    true
+    return true if user.present? && user.admin?
   end
  
   def show?
