@@ -15,7 +15,11 @@
 	    <% if current_user.admin? %>
 	    	<li><%= link_to "Eventos", eventos_path %></li>
 	    <%  else %>
-	    	<li><%= link_to "Crea Tu Evento", new_evento_path %></li>
+	    	<% if with_evento? %>
+	    		<li><%= link_to "Tu Evento", evento_path(current_user.evento) %></li>
+	    	<% else %>
+	    		<li><%= link_to "Crea Tu Evento", new_evento_path %></li>
+	    	<% end %>
 	    <% end %>
 	   <% end %> 
 	  </ul>

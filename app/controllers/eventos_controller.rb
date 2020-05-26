@@ -12,6 +12,7 @@ class EventosController < ApplicationController
   # GET /eventos/1
   # GET /eventos/1.json
   def show
+    @eventos = Evento.where(id: params[:id])
   end
 
   # GET /eventos/new

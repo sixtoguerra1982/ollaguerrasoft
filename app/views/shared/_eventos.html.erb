@@ -1,0 +1,30 @@
+<div class="row">
+	<% @eventos.each do |e| %>
+	    <div class="col s6">
+	      <div class="card">
+	        <div class="card-image">
+	          <%= image_tag 'default-image.jpg' %>
+	          <span class="card-title"><%= e.comuna.nombre %></span>
+	          
+	          <% if e.pertenece_to_user(current_user) %>
+	          	<% if evento.present? %>
+	          	 <a class="btn-floating halfway-fab waves-effect waves-light red" href="<%= evento_path(e) %>"><i class="material-icons">add</i></a>
+	          	<% else %>
+	          		 <a class="btn-floating halfway-fab waves-effect waves-light gren" href="<%= evento_path(e) %>"><i class="material-icons">memory</i></a>
+		        <% end %>
+
+	          <% else %>
+	          	<a class="btn-floating halfway-fab waves-effect waves-light red" href="<%= evento_path(e) %>"><i class="material-icons">add</i></a>
+	          <% end %>
+	        </div>
+	        <div class="card-content">
+	          <% if evento.present? %>
+	          	<%= raw e.descripcion.capitalize %>
+	          <% else %>
+	          	<%= raw e.descripcion.capitalize[0..30] + '...' %>
+	          <% end %>
+	        </div>
+	      </div>
+		</div>
+	<% end %>
+</div>

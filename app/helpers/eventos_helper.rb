@@ -1,12 +1,12 @@
 module EventosHelper
 	def with_evento?
    	 if current_user.evento.nil?
-   	 	true
+   	 	false
    	 else
    	 	if current_user.evento.persisted?
-   	 		false
-   	 	else
    	 		true
+   	 	else
+   	 		false
    	 	end
    	 end
    end
