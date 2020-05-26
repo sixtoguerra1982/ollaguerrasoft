@@ -42,5 +42,8 @@
   <%= @evento.photo %>
 </p>
 
-<%= link_to 'Edit', edit_evento_path(@evento) %> |
-<%= link_to 'Back', :back %>
+<% if user_signed_in? && @evento.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_evento_path(@evento) %> |
+  <%= link_to 'Destroy', evento_path(@evento), method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Back', :back %>
+<% end %>

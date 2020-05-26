@@ -60,7 +60,11 @@ class EventosController < ApplicationController
   def destroy
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to eventos_url, notice: 'Evento was successfully destroyed.' }
+      if current_user.admin?
+        format.html { redirect_to eventos_url, notice: 'Evento was successfully destroyed.' }
+      else
+        format.html { redirect_to new_evento_url, notice: 'Evento was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end

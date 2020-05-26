@@ -5,6 +5,7 @@
 <% else %>
 	<h1>Es solo un evento por usuario</h1>
 	<td><%= link_to 'Edit', edit_evento_path(current_user.evento) %></td>
+	<td><%= link_to 'Destroy', evento_path(current_user.evento), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
 
 <%= link_to 'Back', eventos_path %>
