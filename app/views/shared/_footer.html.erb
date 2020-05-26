@@ -21,14 +21,13 @@
 	
 $(document).ready(function(){
 	  dimensionar();
-    $('.sidenav').sidenav();
-
-	  function dimensionar(){
+    
+    function dimensionar(){
       
   		  $('body').css({paddingBottom: $(window).width() >= 768 && $(window).height() >= 500 ?
-  		      $('footer').outerHeight() + 'px' : 
-  		      '0'
-  		  });
+            $('footer').outerHeight() + 'px' : 
+            '0'
+        });
       
 		};	
 
