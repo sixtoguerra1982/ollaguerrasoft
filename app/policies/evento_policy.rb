@@ -12,11 +12,11 @@ class EventoPolicy < ApplicationPolicy
   end
  
   def update?
-    return true if user.present? && user == evento.user
+    return true if user.present? && user == evento.user || user.admin?
   end
  
   def destroy?
-    return true if user.present? && user == evento.user
+    return true if user.present? && user == evento.user || user.admin?
   end
  
   private
