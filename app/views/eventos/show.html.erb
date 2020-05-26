@@ -1,28 +1,38 @@
 <div class="container">
-  <div class="col row">
+  <div class="row">
     <div class="col s6">
       <%= render 'shared/evento' , evento: @eventos%>
     </div>
     <div class="col s6">
+      <h5>Datos: </h5>
       <ul class="collection">
         <li class="collection-item"><label>Email:</label> <%= @evento.user.email %></li>
         <li class="collection-item"><label>Comuna:</label> <%= @evento.comuna.nombre.capitalize %></li>
         <li class="collection-item"><label>Organización:</label> <%= @evento.organizacion %></li>
         <li class="collection-item"><label>Encargado:</label> <%= @evento.encargado %></li>
         <li class="collection-item"><label>Direccion:</label> <%= @evento.direccion %></li>
-        <li class="collection-item"><label>Horario:</label> <%= @evento.dias_horarios %></li>
-        <li class="collection-item"><label>Oganizador:</label> <%= @evento.organizador %></li>
       </ul>
-      
-      <%= link_to '<i class="material-icons">keyboard_backspace</i>'.html_safe, root_path, class: 'btn-floating btn-large cyan pulse' %>
-    </div>
+      <div class="row">
+        <div class="col col s6 offset-s6">
+          <%= link_to '<i class="material-icons">keyboard_backspace</i>'.html_safe, root_path, class: 'btn-floating btn-large cyan pulse' %>
+        
 
-    <% if user_signed_in? && (@evento.user_id == current_user.id || current_user.admin?) %>
-      <%= link_to '<i class="material-icons">edit</i>'.html_safe , edit_evento_path(@evento), class: 'btn-floating btn-large gren pulse' %>
-      |
-      <%= link_to '<i class="material-icons">delete
-    </i>'.html_safe, evento_path(@evento), class: 'btn-floating btn-large red pulse',method: :delete, data: { confirm: 'Are you sure?' } %> 
-      
-    <% end %>
+          <% if user_signed_in? && (@evento.user_id == current_user.id || current_user.admin?) %>
+           |
+            <%= link_to '<i class="material-icons">edit</i>'.html_safe , edit_evento_path(@evento), class: 'btn-floating btn-large gren pulse' %>
+            |
+            <%= link_to '<i class="material-icons">delete
+          </i>'.html_safe, evento_path(@evento), class: 'btn-floating btn-large red pulse',method: :delete, data: { confirm: 'Are you sure?' } %> 
+            
+          <% end %>
+        </div>
+      </div>  
+   </div> 
+   <div class="col s12">
+    <ul class="collection">
+      <li class="collection-item"><label>Horario:</label> <%= @evento.dias_horarios %></li>
+      <li class="collection-item"><label>Oganizador:</label> <%= @evento.organizador %></li>
+     </ul>
+   </div>
   </div>
 </div>

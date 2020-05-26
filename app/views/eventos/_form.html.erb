@@ -12,6 +12,7 @@
       </div>
     <% end %>
     <div class="input-field">    
+      <i class="material-icons prefix">navigate_next</i>
       <select id="comuna" name="comuna">
       <% if evento.comuna_id.nil? %>
         <option value="" disabled selected></option>
@@ -34,36 +35,43 @@
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :descripcion %>
       <%= form.text_area :descripcion %>
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :organizacion %>
       <%= form.text_field :organizacion %>  
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :encargado %>
       <%= form.text_field :encargado %>
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :direccion %>
       <%= form.text_field :direccion %>
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :dias_horarios %>
       <%= form.text_area :dias_horarios %>
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :organizador %>
       <%= form.text_field :organizador %>
     </div>
 
     <div class="input-field">
+      <i class="material-icons prefix">navigate_next</i>
       <%= form.label :photo %>
       <%= form.text_field :photo %>
     </div>
@@ -77,6 +85,7 @@
 <script>
   $(document).ready(function(){
      $('select').formSelect();
+     M.updateTextFields();
      document.getElementById('comuna').addEventListener('change',ShowSelectedComuna,false);
      function ShowSelectedComuna(){
       var comuna = parseInt(document.getElementById("comuna").value);
