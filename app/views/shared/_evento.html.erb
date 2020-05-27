@@ -4,7 +4,7 @@
 	      <div class="card">
 	        <div class="card-image">
 	          <% if e.image.attached? %>
-				<%= image_tag e.image.variant(resize: "100%x100%").processed %>
+				<%= image_tag e.image.variant(resize: "600x600").processed %>
 			  <% else %>
 	         	<%= image_tag 'default-image.jpg' %>
 	          <% end %>

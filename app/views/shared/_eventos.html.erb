@@ -10,16 +10,9 @@
 	         <% end %>
 	          <span class="card-title"><%= e.comuna.nombre %></span>
 	          
-	          <% if e.pertenece_to_user(current_user) %>%
-	          	<% if evento.present? %>
-	          	 <a class="btn-floating halfway-fab waves-effect waves-light red" href="<%= evento_path(e) %>"><i class="material-icons">add</i></a>
-	          	<% else %>
-	          		 <a class="btn-floating halfway-fab waves-effect waves-light gren" href="<%= evento_path(e) %>"><i class="material-icons">memory</i></a>
-		        <% end %>
-
-	          <% else %>
-	          	<a class="btn-floating halfway-fab waves-effect waves-light red" href="<%= evento_path(e) %>"><i class="material-icons">add</i></a>
-	          <% end %>
+	          
+	          	<a class="btn-floating halfway-fab waves-effect waves-light <%= e.pertenece_to_user(current_user) ? 'green' : 'red' %>" href="<%= evento_path(e) %>"><i class="material-icons"><%= e.pertenece_to_user(current_user) ? 'edit' : 'add' %></i></a>
+	          
 	        </div>
 	        <div class="card-content">
 	          <% if evento.present? %>
