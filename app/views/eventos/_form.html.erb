@@ -69,16 +69,22 @@
       <%= form.label :organizador %>
       <%= form.text_field :organizador %>
     </div>
-
-    <div class="input-field">
-      <i class="material-icons prefix">navigate_next</i>
-      <%= form.label :photo %>
-      <%= form.text_field :photo %>
-    </div>
+    
+      <div class="input-field">
+        <div class="custom-file">
+          <i class="material-icons prefix">navigate_next</i>
+          <%= form.label :image %><br>
+          <%= form.file_field :image %>
+        </div>
+        <% if evento.image.attached? %>
+          <%= image_tag evento.image.variant(resize: "100x100").processed %>
+        <% end %>
+      </div>
+    
 
     <div class="actions">
       <%= form.submit %>
-      
+
     </div>
   <% end %>
 </div>

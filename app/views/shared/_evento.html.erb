@@ -3,7 +3,11 @@
 	    
 	      <div class="card">
 	        <div class="card-image">
-	          <%= image_tag 'default-image.jpg' %>
+	          <% if e.image.attached? %>
+				<%= image_tag e.image.variant(resize: "100%x100%").processed %>
+			  <% else %>
+	         	<%= image_tag 'default-image.jpg' %>
+	          <% end %>
 	          <span class="card-title"><%= e.comuna.nombre %></span>
 	          
 	          <% if e.pertenece_to_user(current_user) %>

@@ -68,3 +68,5 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem "devise", "~> 4.7"
 
 gem "pundit", "~> 2.1"
+
+gem "image_processing", "~> 1.11"

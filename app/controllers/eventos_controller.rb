@@ -79,6 +79,6 @@ class EventosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def evento_params
-      params.require(:evento).permit(:comuna_id, :descripcion, :organizacion, :encargado, :direccion, :dias_horarios, :organizador, :photo)
+      params.require(:evento).permit(:comuna_id, :descripcion, :organizacion, :encargado, :direccion, :dias_horarios, :organizador, :image)
     end
 end
