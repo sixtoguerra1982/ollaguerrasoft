@@ -7,4 +7,4 @@ User.all.destroy_all
  	User.create(email: "correo#{i}@correo.cl", password: '123123')
  end
 end
-User.create(email: "admin@admin.cl", password: 'admin123')
+User.create(email: "admin@admin.cl", password: 'admin123' , role: 1)
