@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   		@eventos = Evento.all.where(comuna_id: params[:search].to_i)
       @cantidad = @eventos.count
   	else
-  		@eventos = Evento.all.order(updated_at: :desc)
+  		@eventos = Evento.all
   	end
   end
 
