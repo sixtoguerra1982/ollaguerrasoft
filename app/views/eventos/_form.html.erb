@@ -71,21 +71,37 @@
     </div>
     
       <div class="input-field">
-        <div class="custom-file">
-          <i class="material-icons prefix">navigate_next</i>
-          <%= form.label :image %><br>
-          <%= form.file_field :image %>
+        <div class="row">
+          <div class="col s6">
+            <div class="custom-file">
+              <i class="material-icons prefix">navigate_next</i>
+              <%= form.label :image %><br>
+              <%= form.file_field :image %>
+            </div>
+          </div>
+          <div class="col s3">
+            <% if evento.image.attached? %>
+              <%= image_tag evento.image.variant(resize: "100x100").processed, id:"image_evento" %>
+            <% end %>
+          </div>
+          <div class="col s3" id="image_evento_btns">
+            <% if evento.image.attached? %>
+              <%= link_to '<i class="material-icons">delete</i>'.html_safe, delete_image_path(evento, format: :js), class: 'btn-floating btn-large red pulse', method: :post, remote: true, data: { confirm: 'Are you sure?' } %>
+              <label>Quitar Imagen</label>
+            <% end %>
+          </div>
         </div>
-        <% if evento.image.attached? %>
-          <%= image_tag evento.image.variant(resize: "100x100").processed %>
-        <% end %>
       </div>
     
 
     <div class="actions">
-      <%= form.submit %>
-
+      <div class="row">
+        <div class="col s12 center">
+          <%= form.submit "Guardar" %>
+        </div>
+      </div>
     </div>
+
   <% end %>
 </div>
 

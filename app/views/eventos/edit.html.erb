@@ -2,5 +2,9 @@
 
 <%= render 'form', evento: @evento %>
 
-<%= link_to 'Show', @evento %> |
-<%= link_to 'Back', :back %>
+
+<div class="row">
+    <div class="col s12 center">
+		<%= link_to '<i class="material-icons">keyboard_backspace</i>'.html_safe, :back, class: 'btn-floating btn-large cyan pulse' %>
+	</div>
+</div>

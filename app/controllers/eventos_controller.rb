@@ -1,6 +1,6 @@
 class EventosController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_evento, only: [:show, :edit, :update, :destroy]
+  before_action :set_evento, only: [:show, :edit, :update, :destroy, :delete_image]
 
   # GET /eventos
   # GET /eventos.json
@@ -59,6 +59,9 @@ class EventosController < ApplicationController
   # DELETE /eventos/1
   # DELETE /eventos/1.json
   def destroy
+    if @evento.image.attached?
+      @evento.image.purge
+    end
     @evento.destroy
     respond_to do |format|
       if current_user.admin?
@@ -67,6 +70,15 @@ class EventosController < ApplicationController
         format.html { redirect_to new_evento_url, notice: 'Evento was successfully destroyed.' }
       end
       format.json { head :no_content }
+    end
+  end
+
+  def delete_image
+    if @evento.image.attached?
+      @evento.image.purge
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
