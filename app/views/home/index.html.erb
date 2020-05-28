@@ -4,28 +4,42 @@
 
 	<div class="input-field col s12">
 		<select id="region" name="region" onchange="ShowSelectedRegion();">
-			<option value="" disabled selected></option>
+		  <% if ! params[:region].present? %>
+		  	<option value="" disabled selected></option>
+		  <% end %>
 		  <% @regiones.each do |r| %>
-			    <option value="<%= r.id %>"><%= r.nombre %></option>
+			    <option value="<%= r.id %>" <%= params[:region].to_i == r.id ? 'selected' : '' %>><%= r.nombre %></option>
 		  <% end %>
 		</select>
 		<label>Seleccione Region</label>
 	  </div>
 
 	 <div class="input-field col s6">
-		<select id="comuna" name="comuna" onchange="ShowSelectedComuna();">
-		  <option value="" disabled selected></option>
-		  <% @regiones.each do |r| %>
-		  	<optgroup label="<%= r.nombre %>">
-		  		<% r.comunas.each do |c| %>
-			    	<option value="<%= c.id %>"><%= c.nombre %></option>
-			    <% end %>
-		  	</optgroup>
-		  <% end %>
-		</select>
+	 	<% if @comunas.present? %>
+	 		<select id="comuna" name="comuna" onchange="ShowSelectedComuna();">
+			  <option value="" disabled selected></option>
+			  <% @comunas.each do |c| %>
+			  	<option value="<%= c.id %>"><%= c.nombre %></option>
+			  <% end %>
+			</select>
+	 	<% else %>
+			<select id="comuna" name="comuna" onchange="ShowSelectedComuna();">
+			  <% if ! params[:comuna].present? %>
+			  	<option value="" disabled selected></option>
+			  <% end %>
+			  <% @regiones.each do |r| %>
+			  	<optgroup label="<%= r.nombre %>">
+			  		<% r.comunas.each do |c| %>
+				    	<option value="<%= c.id %>" <%= params[:comuna].to_i == c.id ? 'selected' : '' %>><%= c.nombre %></option>
+				    <% end %>
+			  	</optgroup>
+			  <% end %>
+			</select>
+		<% end %>
+
 		<label>Seleccione Comuna</label>
 		<div class="col s6 center-align">
-      		<a class="btn-floating btn-large cyan pulse" href="<%= home_index_path %>" id="search"><i class="material-icons">search</i></a>
+      		<a class="btn-floating btn-large cyan pulse" href='<%= params[:region].present? ? "#{home_index_path}" +  "?region=#{params[:region].to_i}" : "#{home_index_path}" %>' id="search"><i class="material-icons">search</i></a>
       	</div>
 	 </div>
 	</div>
@@ -35,6 +49,11 @@
 	<% if @comuna.present? %>
 		<div class="container">
        		<p><%= @cantidad %><%= @cantidad == 1 ? ' Registro encontrado' : ' Registros encontrados' %> en la comuna de : <%= @comuna.nombre.capitalize %> , Region : <%= @comuna.region.nombre.capitalize %> </p>
+       	</div>
+    <% end %>
+    <% if @region.present? %>
+    	<div class="container">
+       		<p><%= @cantidad %><%= @cantidad == 1 ? ' Registro encontrado' : ' Registros encontrados' %><%= " en la Region #{ @region.nombre }" %> </p>
        	</div>
     <% end %>
 	<%= render 'shared/eventos' , evento: nil %>	
@@ -53,11 +72,12 @@
 	      dataType: "script",
 	      data: {region_id: region}
 	    });
+	    $('#search').attr("href","<%= home_index_path + '?region='%>" + region);
  	}
 
  	function ShowSelectedComuna(){
  		var comuna = parseInt(document.getElementById("comuna").value);
- 		$('#search').attr("href","<%= home_index_path + '?search='%>" + comuna);
+ 		$('#search').attr("href","<%= home_index_path + '?comuna='%>" + comuna);
  	}
  </script>
 

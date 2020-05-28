@@ -1,13 +1,20 @@
 class HomeController < ApplicationController
   def index
-  	@regiones = Region.all
-  	if params[:search].present?
-      @comuna = Comuna.find(params[:search].to_i)
-  		@eventos = Evento.all.where(comuna_id: params[:search].to_i)
+  	if params[:comuna].present? || params[:region].present?
+      if params[:comuna].present?
+        @comuna = Comuna.find(params[:comuna].to_i)
+        @eventos = Evento.all.where(comuna_id: params[:comuna].to_i)
+        params[:region] = @comuna.region.id
+      else
+        @region = Region.find(params[:region].to_i)
+        @comunas = @region.comunas
+        @eventos = @region.eventos
+      end
       @cantidad = @eventos.count
   	else
   		@eventos = Evento.all
   	end
+    @regiones = Region.all
   end
 
   def change_region
