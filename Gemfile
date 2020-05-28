@@ -70,3 +70,6 @@ gem "devise", "~> 4.7"
 gem "pundit", "~> 2.1"
 
 gem "image_processing", "~> 1.11"
+
+gem 'dotenv-rails', groups: [:development, :test]
+gem "aws-sdk-s3", "~> 1.66"

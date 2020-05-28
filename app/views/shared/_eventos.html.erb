@@ -2,7 +2,7 @@
 	<% @eventos.each do |e| %>
 		<div class="col s6">
 	      <div class="card">
-	        <div class="card-image">
+	        <div class="card-image card-image-petite">
        		 <% if e.image.attached? %>
 				<%= image_tag e.image.variant(resize: "600x600").processed %>
 			 <% else %>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col s6">
+    <div class="col offset-s3 s6">
       <%= render 'shared/evento' , evento: @eventos%>
     </div>
-    <div class="col s6">
+    <div class="col s12">
       <h5>Datos: </h5>
       <ul class="collection">
         <li class="collection-item"><label>Email:</label> <%= @evento.user.email %></li>
@@ -11,17 +11,13 @@
         <li class="collection-item"><label>Organización:</label> <%= @evento.organizacion %></li>
         <li class="collection-item"><label>Encargado:</label> <%= @evento.encargado %></li>
         <li class="collection-item"><label>Direccion:</label> <%= @evento.direccion %></li>
+        <li class="collection-item"><label>Horario:</label> <%= @evento.dias_horarios %></li>
+        <li class="collection-item"><label>Oganizador:</label> <%= @evento.organizador %></li>
       </ul>
-   </div> 
-   <div class="col s12">
-    <ul class="collection">
-      <li class="collection-item"><label>Horario:</label> <%= @evento.dias_horarios %></li>
-      <li class="collection-item"><label>Oganizador:</label> <%= @evento.organizador %></li>
-     </ul>
-   </div>
+    </div> 
   </div>
   <div class="row">
-    <div class="col s8 offset-s4">
+    <div class="col s12 center">
       <%= link_to '<i class="material-icons">keyboard_backspace</i>'.html_safe, root_path, class: 'btn-floating btn-large cyan pulse' %>
     
 
