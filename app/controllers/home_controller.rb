@@ -5,9 +5,9 @@ class HomeController < ApplicationController
         @comuna = Comuna.find(params[:comuna].to_i)
         @eventos = Evento.all.where(comuna_id: params[:comuna].to_i)
         params[:region] = @comuna.region.id
+        @comunas = Region.find(params[:region].to_i).comunas
       else
         @region = Region.find(params[:region].to_i)
-        @comunas = @region.comunas
         @eventos = @region.eventos
       end
       @cantidad = @eventos.count
