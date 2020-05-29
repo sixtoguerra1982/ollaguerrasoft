@@ -15,11 +15,7 @@
 	          
 	        </div>
 	        <div class="card-content">
-	          <% if evento.present? %>
-	          	<%= raw e.descripcion.capitalize %>
-	          <% else %>
-	          	<%= raw e.descripcion.chomp.capitalize[0..30] + '...' %>
-	          <% end %>
+	          	<%= raw truncate(e.descripcion, length:40, omission: "...") %>
 	        </div>
 	      </div>
 		</div>
