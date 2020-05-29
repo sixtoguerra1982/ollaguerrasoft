@@ -1,6 +1,32 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wavy{
+	position: relative;
+	margin-left: 100px;
+	-webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0,0,0,0.2));
+}
 
+.wavy span{
+	position: relative;
+	display: inline-block;
+	color: #000000;
+	font-size: 2em;
+	text-transform: uppercase;
+	animation: animate 1s ease-in-out infinite;
+	animation-delay: calc(0.1s * var(--i));
+}
 
+@keyframes animate{
+	0%{
+		transform: translateY(0px);
+	}
+	20%{
+		transform: translateY(-20px);
+	}
+	40%, 100%
+	{
+		transform: translateY(0px);
+	}
 
+}

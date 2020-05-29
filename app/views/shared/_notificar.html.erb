@@ -1,2 +1,13 @@
-<p class="notice"><%= flash[:notice] %></p>
-<p class="alert"><%= flash[:alert] %></p>
+<script>
+	$(document).ready(function(){
+		var notice = "<%=j flash[:notice] %>"
+		if (notice.length > 0) {
+			M.toast({html: notice})
+		}
+		var alert = "<%=j flash[:alert] %>"
+		if (alert.length > 0) {
+			M.toast({html: alert})
+		}
+
+	})
+</script>
