@@ -40,25 +40,32 @@
 		<% end %>
 
 		<label>Seleccione Comuna</label>
-		<div class="col s6 center-align">
+
+    <!--  action buttons -->
+		  <div class="col s6 center-align">
           <% if params[:comuna].present? && params[:region].present? %>
-            <a class="btn-floating btn-large cyan pulse"
+            <a class="btn-floating btn-large green pulse"
             href='<%= params[:comuna].present? ?
             "#{home_index_path}#{"?comuna=#{params[:comuna].to_i}"}" : "" %>'
             id="search"><i class="material-icons">search</i></a>
           <%else%>
             <% if params[:comuna].present? %>
-              <a class="btn-floating btn-large cyan pulse"
+              <a class="btn-floating btn-large green pulse"
               href='<%= params[:comuna].present? ?
               "#{home_index_path}#{"?comuna=#{params[:comuna].to_i}"}" : "" %>'
               id="search"><i class="material-icons">search</i></a>
             <% else %>
-          		<a class="btn-floating btn-large cyan pulse"
+          		<a class="btn-floating btn-large green pulse"
               href='<%= params[:region].present? ?
               "#{home_index_path}#{"?region=#{params[:region].to_i}"}" : "#{home_index_path}" %>'
               id="search"><i class="material-icons">search</i></a>
             <% end %>
           <% end %>
+
+          <a class="btn-floating btn-large cyan pulse"
+          href="<%= home_index_path %>"
+          id="search"><i class="material-icons">refresh</i></a>
+
       	</div>
 	 </div>
 	</div>
