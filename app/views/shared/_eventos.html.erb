@@ -15,7 +15,7 @@
 	          
 	        </div>
 	        <div class="card-content">
-	          	<%= raw truncate(e.descripcion, length:40, omission: "...") %>
+	          	<%= truncate(e.descripcion_short , length:30, omission: '...').html_safe %>
 	        </div>
 	      </div>
 		</div>

@@ -10,4 +10,8 @@ class Evento < ApplicationRecord
   		false
   	end
   end
+
+  def descripcion_short
+    self.descripcion + (' ' * 50)
+  end
 end
