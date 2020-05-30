@@ -22,4 +22,7 @@ class HomeController < ApplicationController
   	@comunas = @region.comunas
   end
 
+  def politicas
+  end
+
 end
