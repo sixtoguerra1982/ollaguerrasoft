@@ -79,7 +79,8 @@
               <%= form.file_field :image %>
             </div>
           </div>
-          <div class="col s3">
+          <div class="col offset-s6 s3">
+            <br>
             <% if evento.image.attached? %>
               <%= image_tag evento.image.variant(resize: "100x100").processed, id:"image_evento" %>
             <% end %>
